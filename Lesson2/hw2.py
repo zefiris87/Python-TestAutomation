@@ -31,6 +31,3 @@ def transform(legacy_data: Dict[int, List[str]]) -> Dict[str, int]:
             output.update(dict.fromkeys(value.lower(), key))
 
     return dict(sorted(output.items()))
-
-
-transform({1: ["A", "E"], 2: ["B", "G"]})

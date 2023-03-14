@@ -25,6 +25,3 @@ def major_and_minor_elem(inp: List) -> Tuple[int, int]:
     inp.sort()
     result = inp.pop(), inp[0]
     return result
-
-
-major_and_minor_elem([3, 2, 3, 1])
