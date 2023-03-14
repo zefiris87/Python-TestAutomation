@@ -13,18 +13,17 @@ Output: 3, 2
 
 Example 2:
 
-Input: [2,2,1,1,1,2,2]
+Input: [2,2,1,1,1,2,2,3]
 Output: 2, 1
 
 """
-import itertools
+from collections import Counter
 from typing import List, Tuple
 
 
 def major_and_minor_elem(inp: List) -> Tuple[int, int]:
-    inp.sort()
-    result = inp.pop(), inp[0]
+    counts = Counter(inp)
+    most_common = counts.most_common(1)[0][0]
+    less_common = counts.most_common().pop()[0]
+    result = most_common, less_common
     return result
-
-
-major_and_minor_elem([3, 2, 3, 1])
