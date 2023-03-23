@@ -14,4 +14,14 @@ from collections.abc import Callable
 
 
 def cache(func: Callable) -> Callable:
-    ...
+    cash = {}
+
+    def casher(*arg):
+        if arg in cash:
+            return cash[arg]
+        else:
+            result = func(*arg)
+            cash[arg] = result
+            return result
+
+    return casher

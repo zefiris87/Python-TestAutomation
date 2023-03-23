@@ -1,7 +1,7 @@
 import os
 
 import pytest
-from hw13 import check_data, validate_date, validate_line
+from hw1 import check_data, validate_date, validate_line
 
 data = [
     "baz@example.com 729.83 USD accountName 2021-01-02",
