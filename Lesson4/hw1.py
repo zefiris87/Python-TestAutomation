@@ -72,15 +72,16 @@ class Teacher:
     @classmethod
     def check_homework(cls, task):
         # working with cache
-        if task.name in Teacher.homework_done and task in Teacher.homework_done[task.name]:
-            return True
-        else:
+        if task.name not in Teacher.homework_done:
             Teacher.homework_done[task.name] = []
+
+        if task in Teacher.homework_done[task.name]:
+            return True
+
         if len(task.solution) > 5:
             Teacher.homework_done[task.name].append(task)
             return True
-        else:
-            return False
+        return False
 
     @classmethod
     def reset_results(cls, *task):
