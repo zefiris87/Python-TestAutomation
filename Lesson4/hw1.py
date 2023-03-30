@@ -71,7 +71,11 @@ class Teacher:
 
     @classmethod
     def check_homework(cls, task):
-        Teacher.homework_done[task.name] = []
+        # working with cache
+        if task.name in Teacher.homework_done and task in Teacher.homework_done[task.name]:
+            return True
+        else:
+            Teacher.homework_done[task.name] = []
         if len(task.solution) > 5:
             Teacher.homework_done[task.name].append(task)
             return True
