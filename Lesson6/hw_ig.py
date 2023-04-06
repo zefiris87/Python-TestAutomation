@@ -3,10 +3,9 @@
 # function should return an iterator (generator function)
 # don't use third-party libraries
 
-
 def merge_elems(*elems):
     for iterable in elems:
-        if isinstance(iterable, (list, tuple)):
+        if isinstance(iterable, (list, tuple, dict)):
             yield from merge_elems(*iterable)
         elif not hasattr(iterable, '__iter__'):
             yield iterable
@@ -20,6 +19,7 @@ a = [1, 2, 3]
 b = 6
 c = 'zhaba'
 d = [[1, 2], [3, 4]]
+a = e = {'aaa': 22, 'bbb': 66}
 
 for _ in merge_elems(a, b, c, d):
     print(_, end=' ')
@@ -34,7 +34,7 @@ def map_like(func, *elems):
     for i in elems:
         try:
             yield func(i)
-        except TypeError as e:
+        except Exception as e:
             print('%s:' %i, e)
 
 
