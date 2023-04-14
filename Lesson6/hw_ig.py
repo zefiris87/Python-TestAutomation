@@ -5,13 +5,13 @@
 
 def merge_elems(*elems):
     for iterable in elems:
-        if isinstance(iterable, (list, tuple, dict)):
-            yield from merge_elems(*iterable)
-        elif not hasattr(iterable, '__iter__'):
-            yield iterable
-        else:
+        if isinstance(iterable, str):
             for item in iterable:
                 yield item
+        elif hasattr(iterable, '__iter__'):
+            yield from merge_elems(*iterable)
+        else:
+            yield iterable
 
 
 # example input
